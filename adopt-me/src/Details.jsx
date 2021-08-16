@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "./Carousel";
+import ErrorBoundry from "./ErrorBoundry";
 
 class Details extends Component {
   constructor() {
@@ -42,8 +43,15 @@ class Details extends Component {
   }
 }
 
-export default withRouter(Details);
+const DetailsWithRouter = withRouter(Details);
 
+export default function DetailsErrorBoundary(props) {
+  return (
+    <ErrorBoundry>
+      <DetailsWithRouter {...props} />
+    </ErrorBoundry>
+  );
+}
 // function Details(props) {
 //   const [pets, setPets] = useState([]);
 //   useEffect(() => {
