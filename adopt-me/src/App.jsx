@@ -1,7 +1,8 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
+import Page404 from "./Page404";
 
 function App() {
   return (
@@ -12,12 +13,17 @@ function App() {
             <h1>Adopt Me!</h1>
           </Link>
         </header>
-        <Route exact path="/details/:id">
-          <Details />
-        </Route>
-        <Route exact path="/">
-          <SearchParams />
-        </Route>
+        <Switch>
+          <Route exact path="/details/:id">
+            <Details />
+          </Route>
+          <Route exact path="/">
+            <SearchParams />
+          </Route>
+          <Route>
+            <Page404 />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
